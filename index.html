@@ -1,0 +1,2148 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI for Students | IT Exhibition</title>
+
+<meta name="description"
+content="AI for Students - Grade 10 IT Exhibition Project">
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg: #050816;
+    --bg2: #080d20;
+    --card: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.12);
+    --text: #f5f7ff;
+    --muted: #aab4cf;
+    --cyan: #59e7ff;
+    --purple: #9677ff;
+    --pink: #e875ff;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+section {
+    position: relative;
+    padding: 100px 20px;
+    overflow: hidden;
+}
+
+.container {
+    width: min(1150px, 100%);
+    margin: auto;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.bg-orb {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: .13;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.orb1 {
+    background: #00d9ff;
+    top: 10%;
+    left: -180px;
+}
+
+.orb2 {
+    background: #784cff;
+    right: -180px;
+    top: 50%;
+}
+
+.orb3 {
+    background: #ef5bff;
+    left: 40%;
+    bottom: -200px;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    background: rgba(5,8,22,.72);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.nav-inner {
+    width: min(1150px, 100%);
+    margin: auto;
+    padding: 16px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #bfc8df;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: 0;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    padding-top: 130px;
+
+    background:
+        radial-gradient(circle at 50% 20%, rgba(0,220,255,.12), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(120,70,255,.12), transparent 35%);
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: auto;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 9px 18px;
+    border-radius: 50px;
+
+    border: 1px solid rgba(89,231,255,.3);
+    background: rgba(89,231,255,.07);
+
+    color: var(--cyan);
+
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    margin-bottom: 25px;
+
+    animation: fadeUp .8s ease;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 9vw, 105px);
+    line-height: .95;
+    font-weight: 900;
+
+    animation: fadeUp 1s ease;
+}
+
+.hero h1 span {
+    display: block;
+}
+
+.hero-description {
+    max-width: 700px;
+    margin: 30px auto;
+
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.7;
+
+    animation: fadeUp 1.2s ease;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+
+    animation: fadeUp 1.4s ease;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 24px;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #35dfff, #806cff);
+    color: #050816;
+
+    box-shadow: 0 0 35px rgba(89,231,255,.18);
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 45px rgba(89,231,255,.25);
+}
+
+.btn-secondary {
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.04);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-4px);
+    border-color: var(--cyan);
+}
+
+/* Floating AI symbol */
+
+.ai-core {
+    width: 130px;
+    height: 130px;
+
+    margin: 70px auto 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 65px;
+
+    background:
+        radial-gradient(circle,
+        rgba(89,231,255,.25),
+        rgba(120,70,255,.12),
+        transparent 70%);
+
+    border: 1px solid rgba(89,231,255,.25);
+
+    box-shadow:
+        0 0 30px rgba(89,231,255,.12),
+        inset 0 0 30px rgba(120,70,255,.1);
+
+    animation: float 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.section-heading {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 55px;
+}
+
+.section-heading h2 {
+    font-size: clamp(38px, 6vw, 65px);
+    margin-bottom: 18px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats {
+    padding-top: 30px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 18px;
+}
+
+.stat {
+    padding: 30px 20px;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    background: var(--card);
+    backdrop-filter: blur(10px);
+}
+
+.stat-number {
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--cyan);
+}
+
+.stat p {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+/* =========================================================
+   ABOUT AI
+========================================================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+    align-items: center;
+}
+
+.about-visual {
+    min-height: 420px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 30px;
+
+    border: 1px solid var(--border);
+
+    background:
+        radial-gradient(circle at center,
+        rgba(89,231,255,.13),
+        transparent 50%),
+        rgba(255,255,255,.035);
+}
+
+.brain {
+    font-size: 130px;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 25px rgba(89,231,255,.25));
+}
+
+.about-text h3 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.info-list {
+    list-style: none;
+}
+
+.info-list li {
+    margin: 14px 0;
+    color: #dce4f8;
+}
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.info-card {
+    padding: 30px;
+
+    min-height: 245px;
+
+    border-radius: 24px;
+
+    border: 1px solid var(--border);
+
+    background:
+        linear-gradient(145deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.025));
+
+    transition: .4s;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(89,231,255,.45);
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
+.card-icon {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.info-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.info-card p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* =========================================================
+   AI TOOLS
+========================================================= */
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 18px;
+}
+
+.tool {
+    padding: 25px;
+
+    border-radius: 20px;
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,.04);
+
+    transition: .35s;
+}
+
+.tool:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--purple);
+}
+
+.tool-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.tool h3 {
+    margin-bottom: 10px;
+}
+
+.tool p {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* =========================================================
+   INTERACTIVE AI ASSISTANT
+========================================================= */
+
+.assistant-box {
+    max-width: 800px;
+    margin: auto;
+
+    border: 1px solid var(--border);
+    border-radius: 28px;
+
+    background: rgba(255,255,255,.045);
+
+    padding: 25px;
+
+    box-shadow: 0 20px 80px rgba(0,0,0,.2);
+}
+
+.chat-window {
+    height: 320px;
+
+    overflow-y: auto;
+
+    padding: 15px;
+
+    border-radius: 18px;
+
+    background: rgba(0,0,0,.2);
+
+    margin-bottom: 15px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 13px 16px;
+
+    margin-bottom: 12px;
+
+    border-radius: 15px;
+
+    line-height: 1.5;
+}
+
+.bot {
+    background: rgba(89,231,255,.09);
+    border: 1px solid rgba(89,231,255,.15);
+}
+
+.user {
+    margin-left: auto;
+    background: rgba(140,110,255,.16);
+    border: 1px solid rgba(140,110,255,.2);
+}
+
+.chat-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-controls input {
+    flex: 1;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(0,0,0,.25);
+
+    color: white;
+
+    outline: none;
+}
+
+.chat-controls input:focus {
+    border-color: var(--cyan);
+}
+
+/* =========================================================
+   FUTURE
+========================================================= */
+
+.future {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,225,255,.08), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(130,70,255,.1), transparent 35%);
+}
+
+.future-cards {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.future-card {
+    position: relative;
+
+    min-height: 270px;
+
+    padding: 30px;
+
+    border-radius: 24px;
+
+    background: rgba(255,255,255,.045);
+
+    border: 1px solid var(--border);
+
+    transition: .4s;
+
+    overflow: hidden;
+}
+
+.future-card:hover {
+    transform: translateY(-12px);
+    border-color: rgba(89,231,255,.4);
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+
+.future-icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.future-card h3 {
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.future-card p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.future-number {
+    position: absolute;
+    right: 20px;
+    bottom: 5px;
+
+    font-size: 65px;
+    font-weight: 900;
+
+    color: rgba(255,255,255,.035);
+}
+
+/* =========================================================
+   RESPONSIBLE AI
+========================================================= */
+
+.responsible-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.do-card,
+.dont-card {
+    padding: 35px;
+    border-radius: 25px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.045);
+}
+
+.do-card h3,
+.dont-card h3 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.do-card h3 {
+    color: #69f5b5;
+}
+
+.dont-card h3 {
+    color: #ff7b91;
+}
+
+.responsible-list {
+    list-style: none;
+}
+
+.responsible-list li {
+    margin: 15px 0;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+.quiz-box {
+    max-width: 750px;
+    margin: auto;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,.045);
+}
+
+.quiz-question {
+    font-size: 24px;
+    line-height: 1.4;
+    margin-bottom: 25px;
+}
+
+.answers {
+    display: grid;
+    gap: 12px;
+}
+
+.answer {
+    padding: 15px 18px;
+
+    text-align: left;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,.04);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.answer:hover {
+    border-color: var(--cyan);
+    transform: translateX(5px);
+}
+
+.quiz-result {
+    margin-top: 20px;
+    font-weight: bold;
+    min-height: 25px;
+}
+
+.quiz-progress {
+    height: 6px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.08);
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.quiz-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,var(--cyan),var(--purple));
+    transition: .4s;
+}
+
+/* =========================================================
+   EXHIBITION CARD
+========================================================= */
+
+.exhibition-card {
+    max-width: 900px;
+    margin: auto;
+
+    text-align: center;
+
+    padding: 55px 30px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(89,231,255,.2);
+
+    background:
+        radial-gradient(circle at center,
+        rgba(89,231,255,.09),
+        transparent 60%),
+        rgba(255,255,255,.035);
+}
+
+.exhibition-card h2 {
+    font-size: clamp(38px,6vw,65px);
+    margin-bottom: 15px;
+}
+
+.exhibition-card p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.student-name {
+    margin-top: 30px;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.grade {
+    color: var(--cyan);
+    margin-top: 7px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 35px 20px;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(255,255,255,.08);
+
+    color: #8f99b3;
+}
+
+footer strong {
+    color: var(--cyan);
+}
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: 1s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+        top: 65px;
+        left: 15px;
+        right: 15px;
+
+        padding: 20px;
+
+        border-radius: 18px;
+
+        background: rgba(5,8,22,.96);
+        border: 1px solid var(--border);
+
+        flex-direction: column;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .about-grid,
+    .responsible-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-grid,
+    .future-cards {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    section {
+        padding: 75px 16px;
+    }
+
+    .stats-grid,
+    .card-grid,
+    .future-cards,
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .about-visual {
+        min-height: 300px;
+    }
+
+    .brain {
+        font-size: 90px;
+    }
+
+    .chat-controls {
+        flex-direction: column;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- Background -->
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav>
+
+    <div class="nav-inner">
+
+        <a href="#home" class="logo">
+            AI<span>4</span>STUDENTS
+        </a>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">AI</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#assistant">AI Demo</a></li>
+            <li><a href="#future">Future</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-content">
+
+        <span class="badge">
+            GRADE 10 • IT EXHIBITION
+        </span>
+
+        <h1>
+            AI
+            <span class="gradient-text">
+                FOR STUDENTS
+            </span>
+        </h1>
+
+        <p class="hero-description">
+
+            Discover how Artificial Intelligence can transform
+            learning, creativity, productivity and the future
+            of education.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#about" class="btn btn-primary">
+                Explore AI 🚀
+            </a>
+
+            <a href="#quiz" class="btn btn-secondary">
+                Take the Quiz 🧠
+            </a>
+
+        </div>
+
+        <div class="ai-core">
+            🤖
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STATS
+========================================================= -->
+
+<section class="stats">
+
+    <div class="container">
+
+        <div class="stats-grid reveal">
+
+            <div class="stat">
+                <div class="stat-number">🤖</div>
+                <p>AI Technology</p>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">📚</div>
+                <p>Smarter Learning</p>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">💡</div>
+                <p>Creative Ideas</p>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">🚀</div>
+                <p>Future Ready</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHAT IS AI
+========================================================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="badge">
+                UNDERSTANDING AI
+            </span>
+
+            <h2>
+                What is <span class="gradient-text">AI?</span>
+            </h2>
+
+            <p>
+                Artificial Intelligence is technology that allows
+                computers to perform tasks that normally require
+                human intelligence.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-visual reveal">
+
+                <div class="brain">
+                    🧠
+                </div>
+
+            </div>
+
+
+            <div class="about-text reveal">
+
+                <h3>
+                    Intelligence, powered by technology.
+                </h3>
+
+                <p>
+                    AI systems can analyse information, recognise
+                    patterns, understand language, generate content
+                    and help people solve problems.
+                </p>
+
+                <ul class="info-list">
+
+                    <li>✨ Learn from information</li>
+                    <li>🔍 Recognise patterns</li>
+                    <li>💬 Understand language</li>
+                    <li>⚡ Generate useful responses</li>
+                    <li>🧩 Help solve complex problems</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BENEFITS
+========================================================= -->
+
+<section id="benefits">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="badge">
+                WHY STUDENTS USE AI
+            </span>
+
+            <h2>
+                Learn <span class="gradient-text">Smarter</span>
+            </h2>
+
+            <p>
+                AI can become a powerful learning assistant when
+                students use it responsibly.
+            </p>
+
+        </div>
+
+
+        <div class="card-grid">
+
+            <div class="info-card reveal">
+
+                <div class="card-icon">📖</div>
+
+                <h3>Study Assistant</h3>
+
+                <p>
+                    Ask questions, request explanations and
+                    explore difficult topics step by step.
+                </p>
+
+            </div>
+
+
+            <div class="info-card reveal">
+
+                <div class="card-icon">🎯</div>
+
+                <h3>Personalized Learning</h3>
+
+                <p>
+                    AI can adapt explanations and practice
+                    activities to different learning needs.
+                </p>
+
+            </div>
+
+
+            <div class="info-card reveal">
+
+                <div class="card-icon">💡</div>
+
+                <h3>Brainstorm Ideas</h3>
+
+                <p>
+                    Use AI to generate project ideas and then
+                    develop them using your own creativity.
+                </p>
+
+            </div>
+
+
+            <div class="info-card reveal">
+
+                <div class="card-icon">🌍</div>
+
+                <h3>Language Learning</h3>
+
+                <p>
+                    Practise vocabulary, translation,
+                    pronunciation and communication.
+                </p>
+
+            </div>
+
+
+            <div class="info-card reveal">
+
+                <div class="card-icon">📝</div>
+
+                <h3>Writing Support</h3>
+
+                <p>
+                    AI can help students improve grammar,
+                    structure and clarity.
+                </p>
+
+            </div>
+
+
+            <div class="info-card reveal">
+
+                <div class="card-icon">🔬</div>
+
+                <h3>Explore Science</h3>
+
+                <p>
+                    Students can explore scientific ideas,
+                    simulations and “what if” questions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     AI TOOLS
+========================================================= -->
+
+<section id="tools">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="badge">
+                AI APPLICATIONS
+            </span>
+
+            <h2>
+                AI <span class="gradient-text">Toolbox</span>
+            </h2>
+
+            <p>
+                Different types of AI tools can support students
+                in different ways.
+            </p>
+
+        </div>
+
+
+        <div class="tools-grid">
+
+            <div class="tool reveal">
+
+                <div class="tool-icon">💬</div>
+
+                <h3>AI Chatbots</h3>
+
+                <p>
+                    Ask questions and discuss ideas.
+                </p>
+
+            </div>
+
+
+            <div class="tool reveal">
+
+                <div class="tool-icon">🎨</div>
+
+                <h3>Image AI</h3>
+
+                <p>
+                    Create visual concepts and designs.
+                </p>
+
+            </div>
+
+
+            <div class="tool reveal">
+
+                <div class="tool-icon">🎵</div>
+
+                <h3>Creative AI</h3>
+
+                <p>
+                    Experiment with music and creative projects.
+                </p>
+
+            </div>
+
+
+            <div class="tool reveal">
+
+                <div class="tool-icon">💻</div>
+
+                <h3>Coding AI</h3>
+
+                <p>
+                    Learn programming concepts and debug code.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     INTERACTIVE AI DEMO
+========================================================= -->
+
+<section id="assistant">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="badge">
+                LIVE EXHIBITION DEMO
+            </span>
+
+            <h2>
+                Try the <span class="gradient-text">AI Assistant</span>
+            </h2>
+
+            <p>
+                Type a question below and see a simple AI-style
+                response generated directly by this website.
+            </p>
+
+        </div>
+
+
+        <div class="assistant-box reveal">
+
+            <div class="chat-window" id="chatWindow">
+
+                <div class="message bot">
+
+                    🤖 Hello! I'm your student AI assistant.
+                    Ask me about studying, science, maths,
+                    programming or learning!
+
+                </div>
+
+            </div>
+
+
+            <div class="chat-controls">
+
+                <input
+                    type="text"
+                    id="chatInput"
+                    placeholder="Ask something..."
+                    onkeydown="if(event.key==='Enter') sendMessage()"
+                >
+
+                <button
+                    class="btn btn-primary"
+                    onclick="sendMessage()">
+                    Send
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FUTURE OF AI
+========================================================= -->
+
+<section class="future" id="future">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="badge">
+                🚀 THE FUTURE IS HERE
+            </span>
+
+            <h2>
+                The Future of
+                <span class="gradient-text">
+                    AI in Education
+                </span>
+            </h2>
+
+            <p>
+                Artificial Intelligence is transforming the way
+                students learn, create, explore and prepare for
+                the future.
+            </p>
+
+        </div>
+
+
+        <div class="future-cards">
+
+            <div class="future-card reveal">
+
+                <div class="future-icon">🤖</div>
+
+                <h3>AI Personal Tutors</h3>
+
+                <p>
+                    AI tutors could explain difficult topics,
+                    answer questions and adapt lessons to each
+                    student's learning level.
+                </p>
+
+                <div class="future-number">01</div>
+
+            </div>
+
+
+            <div class="future-card reveal">
+
+                <div class="future-icon">🎯</div>
+
+                <h3>Personalized Learning</h3>
+
+                <p>
+                    AI can identify strengths and weaknesses and
+                    recommend suitable learning activities.
+                </p>
+
+                <div class="future-number">02</div>
+
+            </div>
+
+
+            <div class="future-card reveal">
+
+                <div class="future-icon">🥽</div>
+
+                <h3>AR & VR Learning</h3>
+
+                <p>
+                    Students could explore space, history,
+                    science and the human body through immersive
+                    experiences.
+                </p>
+
+                <div class="future-number">03</div>
+
+            </div>
+
+
+            <div class="future-card reveal">
+
+                <div class="future-icon">🌍</div>
+
+                <h3>Language Support</h3>
+
+                <p>
+                    AI can help with translation, pronunciation
+                    and language practice.
+                </p>
+
+                <div class="future-number">04</div>
+
+            </div>
+
+
+            <div class="future-card reveal">
+
+                <div class="future-icon">📊</div>
+
+                <h3>Smarter Feedback</h3>
+
+                <p>
+                    AI can help identify areas where students
+                    need additional support.
+                </p>
+
+                <div class="future-number">05</div>
+
+            </div>
+
+
+            <div class="future-card reveal">
+
+                <div class="future-icon">💡</div>
+
+                <h3>Creative Learning</h3>
+
+                <p>
+                    Students can use AI to brainstorm ideas,
+                    design projects and explore new possibilities.
+                </p>
+
+                <div class="future-number">06</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RESPONSIBLE AI
+========================================================= -->
+
+<section id="responsible">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="badge">
+                USE AI WISELY
+            </span>
+
+            <h2>
+                Responsible <span class="gradient-text">AI</span>
+            </h2>
+
+            <p>
+                AI is powerful, but students should use it as
+                a learning assistant rather than a replacement
+                for their own thinking.
+            </p>
+
+        </div>
+
+
+        <div class="responsible-grid">
+
+            <div class="do-card reveal">
+
+                <h3>✅ DO</h3>
+
+                <ul class="responsible-list">
+
+                    <li>📚 Use AI to understand difficult concepts.</li>
+
+                    <li>🧠 Think about and verify AI answers.</li>
+
+                    <li>✍️ Add your own ideas and creativity.</li>
+
+                    <li>🔎 Check important information.</li>
+
+                    <li>🎓 Use AI to learn, not simply copy.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="dont-card reveal">
+
+                <h3>❌ DON'T</h3>
+
+                <ul class="responsible-list">
+
+                    <li>🚫 Copy AI answers without understanding them.</li>
+
+                    <li>🚫 Depend completely on AI.</li>
+
+                    <li>🚫 Assume every AI answer is correct.</li>
+
+                    <li>🚫 Share private or sensitive information.</li>
+
+                    <li>🚫 Use AI to cheat.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUIZ
+========================================================= -->
+
+<section id="quiz">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <span class="badge">
+                TEST YOUR KNOWLEDGE
+            </span>
+
+            <h2>
+                AI <span class="gradient-text">Quiz</span>
+            </h2>
+
+            <p>
+                Let's see what you learned!
+            </p>
+
+        </div>
+
+
+        <div class="quiz-box reveal">
+
+            <div class="quiz-progress">
+
+                <div
+                    class="quiz-progress-bar"
+                    id="quizProgress">
+                </div>
+
+            </div>
+
+
+            <div
+                class="quiz-question"
+                id="quizQuestion">
+            </div>
+
+
+            <div
+                class="answers"
+                id="answers">
+            </div>
+
+
+            <div
+                class="quiz-result"
+                id="quizResult">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EXHIBITION
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="exhibition-card reveal">
+
+            <span class="badge">
+                IT EXHIBITION 2026
+            </span>
+
+            <h2>
+                Learn. Create.
+                <span class="gradient-text">
+                    Innovate.
+                </span>
+            </h2>
+
+            <p>
+                The future belongs to students who learn how
+                to use technology responsibly and creatively.
+            </p>
+
+
+            <div class="student-name">
+                👨‍🎓 Mohammed Shayaan
+            </div>
+
+            <div class="grade">
+                Grade 10 • IT Exhibition
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <p>
+        © 2026 <strong>AI for Students</strong>
+    </p>
+
+    <p style="margin-top:8px;">
+        Created for IT Exhibition • Grade 10
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMenu() {
+
+    document
+        .getElementById("navLinks")
+        .classList.toggle("active");
+
+}
+
+
+/* Close menu after clicking */
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        document
+            .getElementById("navLinks")
+            .classList.remove("active");
+
+    });
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer = new IntersectionObserver(
+
+    entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("visible");
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold: 0.12
+    }
+
+);
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => observer.observe(element));
+
+
+/* =========================================================
+   SIMPLE AI DEMO
+========================================================= */
+
+function sendMessage() {
+
+    const input = document.getElementById("chatInput");
+    const chat = document.getElementById("chatWindow");
+
+    const text = input.value.trim();
+
+    if (!text) return;
+
+
+    /* User message */
+
+    const userMessage = document.createElement("div");
+
+    userMessage.className = "message user";
+
+    userMessage.textContent = text;
+
+    chat.appendChild(userMessage);
+
+
+    input.value = "";
+
+    chat.scrollTop = chat.scrollHeight;
+
+
+    /* AI response */
+
+    setTimeout(() => {
+
+        const botMessage = document.createElement("div");
+
+        botMessage.className = "message bot";
+
+        botMessage.textContent = getAIResponse(text);
+
+        chat.appendChild(botMessage);
+
+        chat.scrollTop = chat.scrollHeight;
+
+    }, 600);
+
+}
+
+
+function getAIResponse(text) {
+
+    const message = text.toLowerCase();
+
+
+    if (
+        message.includes("study") ||
+        message.includes("learn")
+    ) {
+
+        return "📚 Try breaking your topic into smaller parts, asking questions, practising regularly and using AI to explain difficult ideas.";
+
+    }
+
+
+    if (
+        message.includes("math") ||
+        message.includes("mathematics")
+    ) {
+
+        return "🧮 For mathematics, first understand the concept, then solve examples yourself. AI can help explain the steps when you get stuck.";
+
+    }
+
+
+    if (
+        message.includes("science")
+    ) {
+
+        return "🔬 Science becomes easier when you connect concepts with real-world examples. AI can help you explore experiments and explanations.";
+
+    }
+
+
+    if (
+        message.includes("code") ||
+        message.includes("programming")
+    ) {
+
+        return "💻 When learning programming, try writing the code yourself first. AI can then help explain errors and suggest improvements.";
+
+    }
+
+
+    if (
+        message.includes("ai") ||
+        message.includes("artificial intelligence")
+    ) {
+
+        return "🤖 AI is technology that enables computers to perform tasks that normally require human intelligence, such as understanding language and recognising patterns.";
+
+    }
+
+
+    if (
+        message.includes("future")
+    ) {
+
+        return "🚀 The future of education may include AI tutors, personalized learning, AR/VR experiences and smarter feedback systems.";
+
+    }
+
+
+    return "💡 Great question! A good way to use AI is to ask it for an explanation, think critically about the answer, and then apply what you learned yourself.";
+
+}
+
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+const quiz = [
+
+    {
+        question: "What does AI stand for?",
+        answers: [
+            "Advanced Internet",
+            "Artificial Intelligence",
+            "Automated Information",
+            "Applied Internet"
+        ],
+        correct: 1
+    },
+
+    {
+        question: "Which is a responsible way to use AI?",
+        answers: [
+            "Copy everything without reading",
+            "Use AI to cheat",
+            "Use AI to understand difficult topics",
+            "Never check AI answers"
+        ],
+        correct: 2
+    },
+
+    {
+        question: "What can AI help students do?",
+        answers: [
+            "Understand concepts",
+            "Brainstorm ideas",
+            "Practise languages",
+            "All of the above"
+        ],
+        correct: 3
+    },
+
+    {
+        question: "What should students remember about AI answers?",
+        answers: [
+            "They are always correct",
+            "They should never be checked",
+            "They should be evaluated and verified",
+            "They are always written by humans"
+        ],
+        correct: 2
+    },
+
+    {
+        question: "Which could be part of the future of AI education?",
+        answers: [
+            "AI personal tutors",
+            "Personalized learning",
+            "AR and VR learning",
+            "All of the above"
+        ],
+        correct: 3
+    }
+
+];
+
+
+let currentQuestion = 0;
+let score = 0;
+
+
+function loadQuestion() {
+
+    const question =
+        quiz[currentQuestion];
+
+    document.getElementById("quizQuestion")
+        .textContent =
+        question.question;
+
+
+    const answers =
+        document.getElementById("answers");
+
+    answers.innerHTML = "";
+
+
+    question.answers.forEach((answer,index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "answer";
+
+        button.textContent = answer;
+
+        button.onclick = () =>
+            checkAnswer(index);
+
+        answers.appendChild(button);
+
+    });
+
+
+    document.getElementById("quizProgress")
+        .style.width =
+        ((currentQuestion / quiz.length) * 100) + "%";
+
+
+    document.getElementById("quizResult")
+        .textContent = "";
+
+}
+
+
+function checkAnswer(index) {
+
+    const question =
+        quiz[currentQuestion];
+
+    const result =
+        document.getElementById("quizResult");
+
+
+    if (index === question.correct) {
+
+        score++;
+
+        result.textContent =
+            "✅ Correct! Great job!";
+
+    } else {
+
+        result.textContent =
+            "❌ Not quite. Keep learning!";
+
+    }
+
+
+    document
+        .querySelectorAll(".answer")
+        .forEach(button => {
+
+            button.disabled = true;
+
+        });
+
+
+    setTimeout(() => {
+
+        currentQuestion++;
+
+
+        if (currentQuestion < quiz.length) {
+
+            loadQuestion();
+
+        } else {
+
+            document.getElementById("quizQuestion")
+                .textContent =
+                "🎉 Quiz Complete!";
+
+            document.getElementById("answers")
+                .innerHTML = "";
+
+            document.getElementById("quizProgress")
+                .style.width = "100%";
+
+            document.getElementById("quizResult")
+                .textContent =
+                "You scored " + score +
+                " out of " + quiz.length +
+                "! 🚀";
+
+            score = 0;
+
+            currentQuestion = 0;
+
+        }
+
+    }, 900);
+
+}
+
+
+loadQuestion();
+
+
+/* =========================================================
+   EXTRA KEYBOARD EFFECT
+========================================================= */
+
+document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+
+        document
+            .getElementById("navLinks")
+            .classList.remove("active");
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
+```
